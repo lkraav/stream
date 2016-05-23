@@ -100,7 +100,7 @@ class Alerts_List {
 		switch ( $column_name ) {
 			case 'alert_type' :
 				$alert_type = $alert->alert_type;
-				esc_html_e( $this->plugin->alerts->alert_types[ $alert_type ]->name );
+				$this->plugin->alerts->alert_types[ $alert_type ]->display_name( $alert );
 				break;
 			case 'alert_trigger' :
 				$values = array();

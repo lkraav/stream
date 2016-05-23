@@ -44,6 +44,10 @@ abstract class Alert_Type {
 		return;
 	}
 
+	public function display_name( $alert ) {
+		esc_html_e( $this->name );
+	}
+
 	/**
 	 * Allow connectors to determine if their dependencies is satisfied or not
 	 *

@@ -111,4 +111,16 @@ class Alert_Type_Highlight extends Alert_Type {
 		}
 		return $classes;
 	}
+
+	public function display_name( $alert ) {
+		$options = $this->get_highlight_options();
+		if ( ! empty( $alert->alert_meta['color'] ) && array_key_exists( $alert->alert_meta['color'], $options ) ) {
+			$recipient = '<strong>' . esc_html( $options[ $alert->alert_meta['color'] ] ) . '</strong>';
+			$message = sprintf( __( 'Highlight Record in %s', 'stream' ), $recipient );
+		} else {
+			$message = sprintf( __( 'Highlight Record', 'stream' ) );
+		}
+
+		echo $message; //xss ok.
+	}
 }

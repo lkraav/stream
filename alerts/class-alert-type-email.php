@@ -86,4 +86,15 @@ class Alert_Type_Email extends Alert_Type {
 			$alert->alert_meta['email_subject'] = $_POST['wp_stream_email_subject'];
 		}
 	}
+
+	public function display_name( $alert ) {
+		if ( ! empty( $alert->alert_meta['email_recipient'] ) ) {
+			$recipient = '<strong>' . esc_html( $alert->alert_meta['email_recipient'] ) . '</strong>';
+			$message = sprintf( __( 'Send Email to %s', 'stream' ), $recipient );
+		} else {
+			$message = sprintf( __( 'Send Email', 'stream' ) );
+		}
+
+		echo $message; //xss ok.
+	}
 }
